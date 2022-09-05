@@ -1,3 +1,9 @@
 #root {
   color: red;
+  padding: 1em;
+}
+
+/* Card Styling */
+.card-title {
+  text-align: center;
 }
