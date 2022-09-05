@@ -13,7 +13,7 @@ function makePageForEpisodes(episodeList) {
             <div class="card-body">
               <h5 class="card-title">${elem.name} - S0${elem.season}E0${elem.season}</h5>
             </div>
-            <img src=${episodeList[0].url} alt="">
+            <img src=${elem.image.medium} alt="">
             <div class="card-body">
               <p class="card-text">${elem.summary}</p>
             </div>
@@ -21,8 +21,6 @@ function makePageForEpisodes(episodeList) {
           </div>
       `;
   });
-
-  console.log(typeof srcImg);
 
 }
 
