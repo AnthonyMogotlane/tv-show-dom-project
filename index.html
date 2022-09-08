@@ -11,10 +11,25 @@
   </head>
 
   <body>
-    <div class="container">
-      <div id="root" class="row">
+    <header>
+      <nav class="navbar bg-light">
+        <div class="container">
+          <form class="d-flex" role="search">
+            <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div id="root" class="row">
+        </div>
       </div>
-    </div>
+    </main>
+    <footer>
+      <p>The data has been taken from <a href="https://www.tvmaze.com/">TVMaze.com</a></p>
+    </footer>
+    
 
     <!-- Loads a provided function called getAllEpisodes() which returns all episodes -->
     <script src="episodes.js"></script>

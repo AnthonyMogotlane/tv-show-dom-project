@@ -8,7 +8,7 @@ function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
   episodeList.forEach(elem => {
       rootElem.innerHTML += `
-          <div class="col-3">
+          <div class="col-12 col-lg-3 col-sm-4">
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">${elem.name} - S0${elem.season}E0${elem.season}</h5>
@@ -21,7 +21,22 @@ function makePageForEpisodes(episodeList) {
           </div>
       `;
   });
-
 }
 
-window.onload = setup;
+//search field
+const searchField = document.querySelector("#search");
+
+searchField.addEventListener("keyup", (e) => {
+  let inputText = e.target.value;
+
+  let temp = getAllEpisodes().filter(f => {
+    if(f.name.includes(inputText)) {
+      return f;
+    }
+  })
+
+  makePageForEpisodes(temp);
+  console.log(inputText);
+})
+
+//window.onload = setup;

@@ -4,6 +4,15 @@
 }
 
 /* Card Styling */
+.card {
+  margin-bottom: 1em;
+}
+
 .card-title {
+  text-align: center;
+}
+
+/* footer */ 
+footer {
   text-align: center;
 }
