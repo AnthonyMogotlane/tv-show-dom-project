@@ -48,8 +48,8 @@ searchField.addEventListener("keyup", (e) => {
   let inputText = e.target.value.toLowerCase();
 
   let temp = allEpisodes.filter(episode => {
-    if(episode.name.includes(inputText)) return episode;
-    if(episode.summary.includes(inputText)) return episode;
+    if(episode.name.toLowerCase().includes(inputText)) return episode;
+    if(episode.summary.toLowerCase().includes(inputText)) return episode;
   })
   // Template
   makePageForEpisodes(temp);
@@ -66,9 +66,14 @@ allEpisodes.forEach(episode => {
 
 dropdown.addEventListener("change", () => {
   let selectedId = dropdown.options[dropdown.selectedIndex].value;
-  let temp = allEpisodes.find(episode => {
-    if(episode.id == selectedId) return episode;
-  })
-  // Template
-  makePageForEpisodes([temp])
+  console.log(selectedId);
+  if(selectedId != 0) {
+    let temp = allEpisodes.find(episode => {
+      if(episode.id == selectedId) return episode;
+    })
+    // Template
+    makePageForEpisodes([temp])
+  } else {
+    makePageForEpisodes(allEpisodes);
+  }
 })
