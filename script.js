@@ -1,42 +1,74 @@
-//You can edit ALL of the code here
+// Data
+const allEpisodes = getAllEpisodes().map(episode => {
+  return {
+    id: episode.id,
+    name: episode.name,
+    season: episode.season,
+    number: episode.number,
+    airdate: episode.airdate,
+    airstamp: episode.airtime,
+    imageMedium: episode.image.medium,
+    imageOriginal: episode.image.original,
+    summary: episode.summary,
+    _linksSelf: episode._links.self.href
+  }
+})
+
 function setup() {
-  const allEpisodes = getAllEpisodes();
   makePageForEpisodes(allEpisodes);
 }
 
+// Template
 function makePageForEpisodes(episodeList) {
   const rootElem = document.getElementById("root");
+  let content = "";
   episodeList.forEach(elem => {
-      rootElem.innerHTML += `
-          <div class="col-12 col-lg-3 col-sm-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">${elem.name} - S0${elem.season}E0${elem.season}</h5>
-            </div>
-            <img src=${elem.image.medium} alt="">
-            <div class="card-body">
-              <p class="card-text">${elem.summary}</p>
-            </div>
-          </div>
-          </div>
-      `;
+   content += `
+      <div class="col-12 col-lg-3 col-sm-4">
+      <div class="card">
+      <div class="card-body">
+      <h5 class="card-title">${elem.name} - S0${elem.season}E0${elem.number}</h5>
+      </div>
+      <img src=${elem.imageMedium} alt="">
+      <div class="card-body">
+      <p class="card-text">${elem.summary}</p>
+      </div>
+      </div>
+      </div>
+    `;
   });
+  rootElem.innerHTML = content;
 }
+
+window.onload = setup;
 
 //search field
 const searchField = document.querySelector("#search");
-
 searchField.addEventListener("keyup", (e) => {
-  let inputText = e.target.value;
+  let inputText = e.target.value.toLowerCase();
 
-  let temp = getAllEpisodes().filter(f => {
-    if(f.name.includes(inputText)) {
-      return f;
-    }
+  let temp = allEpisodes.filter(episode => {
+    if(episode.name.includes(inputText)) return episode;
+    if(episode.summary.includes(inputText)) return episode;
   })
-
+  // Template
   makePageForEpisodes(temp);
-  console.log(inputText);
 })
 
-//window.onload = setup;
+// Dropdown
+const dropdown = document.querySelector(".dropdown");
+
+allEpisodes.forEach(episode => {
+  dropdown.innerHTML += `
+      <option value="${episode.id}">S0${episode.season}E0${episode.number} - ${episode.name}</options>
+  `;
+})
+
+dropdown.addEventListener("change", () => {
+  let selectedId = dropdown.options[dropdown.selectedIndex].value;
+  let temp = allEpisodes.find(episode => {
+    if(episode.id == selectedId) return episode;
+  })
+  // Template
+  makePageForEpisodes([temp])
+})
