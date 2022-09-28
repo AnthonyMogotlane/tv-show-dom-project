@@ -14,14 +14,20 @@
     <header>
       <nav class="navbar bg-dark">
         
-        <div class="container">
-          <select class="dropdown">
+        <div class="d-flex">
+          <select class="dropdown-show mx-1 rounded">
+            <option value="none">Shows</option>
+          </select>
+
+          <select class="dropdown mx-1 rounded">
             <option value="none">Episodes</option>
           </select>
 
-          <form class="d-flex" role="search">
+          <form class="mx-1" role="search">
             <input id="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           </form>
+
+          <p class="text-danger mx-2 my-auto" id="display-count"></p>
         </div>
       </nav>
     </header>
