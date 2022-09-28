@@ -1,6 +1,7 @@
 #root {
   color: red;
-  padding: 1em;
+  padding: 2em;
+  margin-top: 8vh;
 }
 
 /* Card Styling */
@@ -12,7 +13,12 @@
   text-align: center;
 }
 
+.form-select {
+  width: 150px !important;
+}
+
 /* footer */ 
 footer {
   text-align: center;
+  
 }
